@@ -1,0 +1,410 @@
+{% extends "formations/base.html" %}
+{% load static %}
+
+{% block content %}
+<!-- Section Héroïque -->
+<section class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+        <div class="row align-items-center min-vh-75">
+            <div class="col-lg-7 text-white">
+                <h1 class="display-4 fw-bold mb-4">Trouvez le formateur idéal pour vos besoins</h1>
+                <p class="lead mb-4">EduLink connecte les apprenants aux meilleurs formateurs(Enseignants) au Sénégal pour une éducation personnalisée et de qualité.</p>
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="{% url 'liste_formateurs' %}" class="btn btn-light btn-lg">
+                        <i class="bi bi-search me-2"></i>Trouver un formateur
+                    </a>
+                    <a href="{% url 'register' %}" class="btn btn-outline-light btn-lg">
+                        <i class="bi bi-person-plus me-2"></i>Devenir formateur
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-5 d-none d-lg-block">
+                <div class="hero-card">
+                    <div class="card border-0 shadow-lg">
+                        <div class="card-body p-4">
+                            <h4 class="card-title text-center mb-4">Commencez dès maintenant</h4>
+                            <div class="d-grid gap-3">
+                                <a href="{% url 'liste_formateurs' %}" class="btn btn-primary">
+                                    <i class="bi bi-search me-2"></i>Explorer les formateurs
+                                </a>
+                                <a href="{% url 'register' %}" class="btn btn-success">
+                                    <i class="bi bi-person-plus me-2"></i>Créer un compte
+                                </a>
+                                <a href="{% url 'login' %}" class="btn btn-outline-secondary">
+                                    <i class="bi bi-box-arrow-in-right me-2"></i>Se connecter
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section de présentation -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold">Comment ça fonctionne</h2>
+            <p class="lead text-muted">Un processus simple pour une éducation accessible à tous</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm hover-card">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon bg-primary text-white mb-4">
+                            <i class="bi bi-search"></i>
+                        </div>
+                        <h4>Recherchez</h4>
+                        <p class="text-muted">Parcourez notre liste de formateurs qualifiés et filtrez selon vos besoins spécifiques.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm hover-card">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon bg-primary text-white mb-4">
+                            <i class="bi bi-chat-dots"></i>
+                        </div>
+                        <h4>Contactez</h4>
+                        <p class="text-muted">Vous pouvez échanger avec les formateurs via leurs informations de contact pour discuter de vos objectifs d'apprentissage.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm hover-card">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon bg-primary text-white mb-4">
+                            <i class="bi bi-mortarboard"></i>
+                        </div>
+                        <h4>Apprenez</h4>
+                        <p class="text-muted">Bénéficiez d'un enseignement personnalisé adapté à votre rythme et à vos besoins.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Statistiques -->
+<section class="py-5 bg-primary text-white">
+    <div class="container">
+        <div class="row text-center g-4">
+            <div class="col-md-4">
+                <div class="stats-item">
+                    <div class="display-4 fw-bold mb-2">Nombreux</div>
+                    <p class="lead mb-0">Formateurs qualifiés</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stats-item">
+                    <div class="display-4 fw-bold mb-2">Multiples</div>
+                    <p class="lead mb-0">Matières proposées</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stats-item">
+                    <div class="display-4 fw-bold mb-2">Plusieurs</div>
+                    <p class="lead mb-0">Étudiants satisfaits</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section À propos -->
+<section id="about" class="py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0 text-center">
+                <!-- Logo EduLink remplaçant l'image -->
+                <div class="edulink-logo-container">
+                    <div class="display-1 fw-bold text-primary mb-3">
+                        <i class="bi bi-link-45deg"></i>EduLink
+                    </div>
+                    <div class="logo-tagline text-muted mb-4">Connecter le savoir, construire l'avenir</div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="ps-lg-4">
+                    <h2 class="display-5 fw-bold mb-4">À propos d'EduLink</h2>
+                    <p class="lead">EduLink est née d'un constat simple : il existe de nombreux formateurs(Enseignants) talentueux et des étudiants ou apprenants en quête de renforcement de leur connaissances,
+                        mais trop peu de plateformes pour les connecter efficacement.</p>
+                    <div class="mt-4">
+                        <a href="#" class="btn btn-primary" id="contact-link">
+                            <i class="bi bi-envelope me-2"></i>Contactez-nous
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Section Pourquoi choisir EduLink ? (version mise en relation simple) -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold">Pourquoi choisir EduLink ?</h2>
+            <p class="lead text-muted">Une plateforme simple et efficace pour connecter les formateurs aux apprenants</p>
+        </div>
+        
+        <div class="row g-4">
+            <!-- Carte 1 : Simplicité -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body p-4 text-center">
+                        <div class="feature-icon bg-primary text-white mb-4">
+                            <i class="bi bi-check-circle"></i>
+                        </div>
+                        <h4 class="mb-3">Simplicité</h4>
+                        <p class="mb-3">Une interface intuitive pour vous inscrire, créer votre profil et être visible par les apprenants.</p>
+                        <a href="{% url 'register' %}" class="btn btn-primary mt-2">
+                            <i class="bi bi-person-plus me-2"></i>Rejoindre maintenant
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Carte 2 : Visibilité -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body p-4 text-center">
+                        <div class="feature-icon bg-success text-white mb-4">
+                            <i class="bi bi-eye"></i>
+                        </div>
+                        <h4 class="mb-3">Visibilité</h4>
+                        <p class="mb-3">Augmentez votre visibilité en étant présent sur une plateforme dédiée aux formateurs et aux apprenants.</p>
+                        <a href="{% url 'register' %}" class="btn btn-success mt-2">
+                            <i class="bi bi-arrow-right-circle me-2"></i>S'inscrire maintenant
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Carte 3 : Flexibilité -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body p-4 text-center">
+                        <div class="feature-icon bg-info text-white mb-4">
+                            <i class="bi bi-calendar"></i>
+                        </div>
+                        <h4 class="mb-3">Flexibilité</h4>
+                        <p class="mb-3">Travaillez à votre rythme et selon vos disponibilités. EduLink s'adapte à votre emploi du temps.</p>
+                        <a href="{% url 'register' %}" class="btn btn-info text-white mt-2">
+                            <i class="bi bi-wallet2 me-2"></i>Commencer aujourd'hui
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="py-5 bg-dark text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-4 mb-4 mb-lg-0 text-center">
+                <div class="developer-avatar mx-auto mb-3">
+                    <img src="{% static 'images/myphoto.jpg' %}" alt="Développeur" class="img-fluid rounded-circle">
+                </div>
+                <h4>Adiouma Ndiaye</h4>
+                <p class="text-muted">Etudiant en développement d'application web/mobile</p>
+                <div class="developer-social">
+                    <a href="https://github.com/Trafalgar05" class="social-link" title="GitHub">
+                        <i class="bi bi-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/adiouma-ndiaye" class="social-link" title="LinkedIn">
+                        <i class="bi bi-linkedin"></i>
+                    </a>
+                    <a href="https://wa.me/221782166692" class="social-link" title="Whatsapp">
+                        <i class="bi bi-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="ps-lg-4">
+                    <h3 class="mb-4">À propos du développeur</h3>
+                    <p>Passionné par le développement web et l'éducation, j'ai créé EduLink pour répondre à un besoin crucial au Sénégal : faciliter l'accès à une éducation de qualité.</p>
+                    <p>Je suis étudiant en développement d'application web et mobile à l'Université Cheikh Anta Diop de Dakar.</p>
+                    <p>Mon objectif est de contribuer au développement du secteur éducatif au Sénégal grâce à la technologie, en connectant les meilleurs talents aux étudiants désireux d'apprendre.</p>
+                    <div class="mt-4">
+                        <a href="mailto:vieux2005@gmail.com" class="btn btn-outline-light">
+                            <i class="bi bi-envelope me-2"></i>Me contacter
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-5 bg-primary text-white text-center">
+    <div class="container">
+        <h2 class="display-5 fw-bold mb-4">Prêt à commencer ?</h2>
+        <p class="lead mb-4">Rejoignez EduLink aujourd'hui et découvrez l'éducation du futur</p>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+            <a href="{% url 'register' %}" class="btn btn-light btn-lg">
+                <i class="bi bi-person-plus me-2"></i>Créer un compte
+            </a>
+            <a href="{% url 'liste_formateurs' %}" class="btn btn-outline-light btn-lg">
+                <i class="bi bi-search me-2"></i>Explorer les formateurs
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Styles spécifiques à la page d'accueil -->
+<style>
+    /* Section Héroïque */
+    .hero-section {
+        position: relative;
+        background: url("{% static 'images/studies.jpg' %}") center/cover no-repeat;
+        padding: 100px 0;
+        overflow: hidden;
+        min-height: 650px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(29, 53, 87, 0.8);
+        backdrop-filter: blur(3px);
+    }
+    
+    .hero-content {
+        position: relative;
+        z-index: 2;
+    }
+    
+    .hero-card {
+        transform: translateY(20px);
+        transition: transform 0.3s ease;
+    }
+    
+    .min-vh-75 {
+        min-height: 75vh;
+    }
+    
+    /* Section Fonctionnalités */
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        margin: 0 auto;
+        font-size: 1.5rem;
+    }
+    
+    .hover-card {
+        transition: transform 0.3s ease;
+    }
+    
+    .hover-card:hover {
+        transform: translateY(-5px);
+    }
+
+    /* Style du logo EduLink */
+    .edulink-logo-container {
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .edulink-logo-container .display-1 {
+        font-weight: bold;
+        color: #0d6efd;
+        display: flex;
+        align-items: center;
+        transition: transform 0.3s ease;
+    }
+    
+    .edulink-logo-container .display-1:hover {
+        transform: scale(1.05);
+    }
+    
+    .logo-tagline {
+        font-style: italic;
+        font-size: 1.2rem;
+    }
+    
+    /* Section Marketing (anciennement Témoignages) */
+    .testimonial-avatar {
+        width: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-weight: 600;
+    }
+    
+    /* Section développeur */
+    .developer-avatar {
+        width: 150px;
+        height: 150px;
+        overflow: hidden;
+        border: 4px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+    }
+    
+    .developer-social {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+    
+    .developer-social .social-link {
+        width: 36px;
+        height: 36px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        transition: all var(--transition-speed);
+    }
+    
+    .developer-social .social-link:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-3px);
+    }
+    
+    /* Stats items */
+    .stats-item {
+        padding: 2rem 1rem;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+        .hero-section {
+            padding: 80px 0;
+            min-height: 500px;
+            text-align: center;
+        }
+        
+        .hero-content .btn-group {
+            justify-content: center;
+        }
+    }
+</style>
+{% endblock %}

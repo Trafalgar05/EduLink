@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}EduLink{% endblock %}</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="icon" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/icons/link-45deg.svg" type="image/svg+xml">
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --primary-hover: #3a56d4;
+            --secondary-color: #3d5a80;
+            --accent-color: #48cae4;
+            --dark-color: #1d3557;
+            --light-color: #f8f9fa;
+            --success-color: #2a9d8f;
+            --danger-color: #e63946;
+            --text-color: #333;
+            --text-muted: #6c757d;
+            --transition-speed: 0.3s;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            --radius: 1rem;
+            --radius-sm: 0.5rem;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Navbar Styling */
+        .navbar {
+            background-color: var(--primary-color) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            transition: all var(--transition-speed);
+        }
+        
+        .navbar-scrolled {
+            padding: 0.5rem 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: white !important;
+        }
+        
+        .brand-logo {
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: white;
+            border-radius: 8px;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            transition: transform var(--transition-speed);
+        }
+        
+        .navbar-brand:hover .brand-logo {
+            transform: rotate(10deg);
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.85) !important;
+            margin: 0 0.5rem;
+            padding: 0.5rem 1rem !important;
+            border-radius: var(--radius-sm);
+            transition: all var(--transition-speed);
+        }
+        
+        .nav-link:hover {
+            color: white !important;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-link.active {
+            color: white !important;
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+        
+        .nav-btn {
+            padding: 0.5rem 1.25rem !important;
+            border-radius: var(--radius-sm);
+            transition: all var(--transition-speed);
+        }
+        
+        .nav-btn.btn-success {
+            background-color: var(--success-color) !important;
+            border-color: var(--success-color) !important;
+        }
+        
+        .nav-btn.btn-danger {
+            background-color: var(--danger-color) !important;
+            border-color: var(--danger-color) !important;
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-toggler {
+            border: none;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.5rem;
+            border-radius: var(--radius-sm);
+        }
+        
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+        
+        /* Main content */
+        main {
+            flex: 1;
+            padding: 2rem 0;
+        }
+        
+        /* Footer Styling */
+        footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 3rem 0 2rem;
+            margin-top: auto;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-logo-icon {
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 8px;
+            color: var(--primary-color);
+            font-size: 1.75rem;
+        }
+        
+        .footer-heading {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+        
+        .footer-heading:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all var(--transition-speed);
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .footer-links a i {
+            margin-right: 8px;
+            transition: transform var(--transition-speed);
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .footer-links a:hover i {
+            transform: translateX(3px);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all var(--transition-speed);
+        }
+        
+        .social-link:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .newsletter-form {
+            position: relative;
+        }
+        
+        .newsletter-input {
+            padding: 0.625rem 1rem;
+            border-radius: var(--radius-sm);
+            width: 100%;
+            border: none;
+            padding-right: 3rem;
+        }
+        
+        .newsletter-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.3);
+        }
+        
+        .newsletter-btn {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            padding: 0 15px;
+            background: var(--primary-color);
+            border: none;
+            border-top-right-radius: var(--radius-sm);
+            border-bottom-right-radius: var(--radius-sm);
+            color: white;
+            cursor: pointer;
+            transition: all var(--transition-speed);
+        }
+        
+        .newsletter-btn:hover {
+            background: var(--primary-hover);
+        }
+        
+        .footer-bottom {
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+        }
+        
+        .footer-bottom a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-speed);
+            z-index: 999;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .scroll-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-top:hover {
+            background: var(--primary-hover);
+            transform: translateY(-5px);
+        }
+        
+        @media (max-width: 768px) {
+            .navbar-collapse {
+                background: var(--primary-color);
+                border-radius: var(--radius-sm);
+                margin-top: 0.5rem;
+                padding: 1rem;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-link {
+                margin: 0.25rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Barre de navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}">
+            <div class="brand-logo">
+                <i class="bi bi-link-45deg"></i>
+            </div>
+            EduLink
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <i class="bi bi-list"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/liste_formateurs/' %}active{% endif %}" href="{% url 'liste_formateurs' %}">
+                        <i class="bi bi-people me-1"></i> Liste des Formateurs
+                    </a>
+                </li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/dashboard/' %}active{% endif %}" href="{% url 'dashboard' %}">
+                            <i class="bi bi-speedometer2 me-1"></i> Espace Formateur
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-btn btn-danger ms-2" href="{% url 'logout' %}">
+                            <i class="bi bi-box-arrow-right me-1"></i> Déconnexion
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/login/' %}active{% endif %}" href="{% url 'login' %}">
+                            <i class="bi bi-box-arrow-in-right me-1"></i> Connexion
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-btn btn-success ms-2" href="{% url 'register' %}">
+                            <i class="bi bi-person-plus me-1"></i> Créer un compte
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Contenu de la page -->
+<main>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</main>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <div class="footer-logo">
+                    <div class="footer-logo-icon">
+                        <i class="bi bi-link-45deg"></i>
+                    </div>
+                    <h4 class="mb-0">EduLink</h4>
+                </div>
+                <p>Plateforme dédiée à faciliter les connexions entre apprenants et formateurs.</p>
+                <div class="social-links">
+                    </a>
+                    <a href="https://wa.me/221782166692" class="social-link" title="Whatsapp">
+                        <i class="bi bi-whatsapp"></i>
+                    </a>
+                    <a href="https://www.instagram.com/adiouma_dt" class="social-link" title="Instagram">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/Adiouma Ndiaye" class="social-link" title="LinkedIn">
+                        <i class="bi bi-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6 mb-4">
+                <h5 class="footer-heading">Découvrir</h5>
+                <ul class="footer-links">
+                    <li>
+                        <a href="{% url 'home' %}">
+                            <i class="bi bi-house"></i> Accueil
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'liste_formateurs' %}">
+                            <i class="bi bi-people"></i> Formateurs
+                        </a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li>
+                        <a href="{% url 'dashboard' %}">
+                            <i class="bi bi-speedometer2"></i> Tableau de bord
+                        </a>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a href="{% url 'register' %}">
+                            <i class="bi bi-person-plus"></i> Inscription
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="col-lg-2 col-md-6 mb-4">
+                <h5 class="footer-heading">Aide</h5>
+                <ul class="footer-links">
+                    <li>
+                        <a href="#" id="faq-link">
+                            <i class="bi bi-question-circle"></i> FAQ
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" id="support-link">
+                            <i class="bi bi-headset"></i> Support
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" id="contact-link">
+                            <i class="bi bi-envelope"></i> Contact
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <h5 class="footer-heading">Restez informé</h5>
+                <p>Abonnez-vous à notre newsletter pour recevoir les dernières actualités.</p>
+                <form class="newsletter-form" id="newsletter-form" action="{% url 'newsletter_subscribe' %}" method="post">
+                    {% csrf_token %}
+                    <input type="email" name="email" class="newsletter-input" placeholder="Votre adresse email" required>
+                    <button type="submit" class="newsletter-btn">
+                        <i class="bi bi-send"></i>
+                    </button>
+                </form>
+                <div id="newsletter-response" class="mt-2" style="min-height: 20px;"></div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; {% now "Y" %} EduLink. Tous droits réservés. | 
+                <a href="#" id="privacy-link">Politique de confidentialité</a> | 
+                <a href="#" id="terms-link">Conditions d'utilisation</a>
+            </p>
+        </div>
+    </div>
+</footer>
+
+<!-- Bouton retour en haut -->
+<div class="scroll-top" id="scrollTop">
+    <i class="bi bi-arrow-up"></i>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+        });
+        
+        // Active link
+        const currentLocation = window.location.pathname;
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            const linkPath = link.getAttribute('href');
+            if (linkPath === currentLocation) {
+                link.classList.add('active');
+            }
+        });
+        
+        // Scroll to top button
+        const scrollTopBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add('active');
+            } else {
+                scrollTopBtn.classList.remove('active');
+            }
+        });
+        
+        scrollTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        
+        // Newsletter AJAX
+const newsletterForm = document.getElementById('newsletter-form');
+if (newsletterForm) {
+    newsletterForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const responseDiv = document.getElementById('newsletter-response');
+        
+        // Show loading state
+        submitBtn.innerHTML = '<i class="bi bi-arrow-clockwise"></i>';
+        submitBtn.disabled = true;
+        
+        // Get form data
+        const formData = new FormData(this);
+        
+        // AJAX request
+        fetch(this.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                responseDiv.innerHTML = `<div class="alert alert-success">${data.message}</div>`;
+                this.reset();
+            } else {
+                responseDiv.innerHTML = `<div class="alert alert-danger">${data.message}</div>`;
+            }
+        })
+        .catch(error => {
+            responseDiv.innerHTML = `<div class="alert alert-danger">Erreur lors de l'envoi</div>`;
+        })
+        .finally(() => {
+            submitBtn.innerHTML = '<i class="bi bi-send"></i>';
+            submitBtn.disabled = false;
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                responseDiv.innerHTML = '';
+            }, 5000);
+        });
+    });
+}
+
+    //Gestion envoi formulaire de contact
+    (function() {
+    const handleContactSubmit = async (form) => {
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        
+        try {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `
+                <span class="spinner-border spinner-border-sm" 
+                      role="status" aria-hidden="true"></span> Envoi...
+            `;
+
+            const response = await fetch("{% url 'contact' %}", {
+                method: 'POST',
+                body: new FormData(form),
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                }
+            });
+
+            const data = await response.json();
+            
+            const alertType = data.success ? 'success' : 'danger';
+            const responseDiv = form.querySelector('#contactFormResponse') || document.createElement('div');
+            responseDiv.innerHTML = `
+                <div class="alert alert-${alertType} mt-2">
+                    ${data.message}
+                </div>
+            `;
+            form.appendChild(responseDiv);
+
+            if(data.success) form.reset();
+        } catch (error) {
+            console.error('Erreur:', error);
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalText;
+        }
+    };
+
+    // Écouteur d'événement compatible avec vos modals existants
+    document.addEventListener('shown.bs.modal', (event) => {
+        const form = event.target.querySelector('#modalContactForm');
+        if (form) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                handleContactSubmit(e.target);
+            });
+        }
+    });
+})();
+        
+        const modalLinks = [
+            'faq-link', 'support-link', 'contact-link', 
+            'privacy-link', 'terms-link'
+        ];
+        
+        modalLinks.forEach(linkId => {
+            const link = document.getElementById(linkId);
+            if (link) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    
+                    let title = linkId.replace('-link', '');
+                    title = title.charAt(0).toUpperCase() + title.slice(1);
+                    
+                    
+                    let content;
+                    switch(linkId) {
+                        case 'faq-link':
+                            content = `<div class="accordion" id="faqAccordion">
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                                    Comment trouver un formateur adapté à mes besoins?
+                                                </button>
+                                            </h2>
+                                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                                <div class="accordion-body">
+                                                    Vous pouvez utiliser notre page "Liste des Formateurs" pour parcourir tous les formateurs disponibles. Utilisez les filtres pour affiner votre recherche par matière ou localité.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                                    Comment créer un compte formateur?
+                                                </button>
+                                            </h2>
+                                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                                <div class="accordion-body">
+                                                    Cliquez sur "Créer un compte" puis complétez le formulaire d'inscription.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>`;
+                            break;
+    case 'contact-link':
+    content = `
+    <form id="modalContactForm">
+        <div class="mb-3">
+            <label for="contact-name" class="form-label">Nom</label>
+            <input type="text" class="form-control" id="contact-name" name="name" required>
+        </div>
+        <div class="mb-3">
+            <label for="contact-email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="contact-email" name="email" required>
+        </div>
+        <div class="mb-3">
+            <label for="contact-message" class="form-label">Message</label>
+            <textarea class="form-control" id="contact-message" name="message" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+        <div id="contactFormResponse" class="mt-2"></div>
+    </form>
+    `;
+    break;
+                        case 'support-link':
+                            content = `<p>Besoin d'aide? Vous pouvez me contacter ici!</p>
+                                      <div class="row mt-4">
+                                        <div class="col-md-6">
+                                            <div class="card mb-3">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Email</h5>
+                                                    <p class="card-text">vieux2005@gmail.com</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="card mb-3">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Téléphone</h5>
+                                                    <p class="card-text">+221 78 216 66 92</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      </div>`;
+                            break;
+case 'privacy-link':
+case 'terms-link':
+    const isPolicyPage = linkId === 'privacy-link';
+    title = isPolicyPage ? 'Politique de confidentialité' : 'Conditions d\'utilisation';
+
+    if (isPolicyPage) {
+        content = `<div class="legal-content">
+                    <p>Dernière mise à jour : {% now "d/m/Y" %}</p>
+
+                    <h5>1. Introduction</h5>
+                    <p>Cette politique de confidentialité explique comment nous collectons, utilisons et protégeons vos données personnelles sur EduLink.</p>
+
+                    <h5>2. Collecte de données</h5>
+                    <p>Nous collectons uniquement les informations que vous fournissez lors de votre inscription et de l’utilisation du service.</p>
+
+                    <h5>3. Utilisation des données</h5>
+                    <p>Les données collectées servent uniquement à l'affichage des profils des formateurs et ne sont jamais partagées avec des tiers sans votre consentement.</p>
+
+                    <h5>4. Vos droits</h5>
+                    <p>Vous avez le droit d’accéder, de modifier ou de supprimer vos données personnelles conformément aux lois en vigueur.</p>
+                   </div>`;
+    } else {
+        content = `<div class="legal-content">
+                    <p>Dernière mise à jour : {% now "d/m/Y" %}</p>
+
+                    <h5>1. Introduction</h5>
+                    <p>Ces conditions d'utilisation régissent votre accès et votre utilisation de la plateforme EduLink.</p>
+
+                    <h5>2. Utilisation du service</h5>
+                    <p>EduLink agit en tant qu’intermédiaire entre les formateurs et les apprenants et ne garantit pas la qualité des formations proposées.</p>
+
+                    <h5>3. Comptes utilisateurs(Formateurs)</h5>
+                    <p>Vous êtes responsable de la confidentialité de vos identifiants et de toute activité réalisée sur votre compte.</p>
+
+                    <h5>4. Propriété intellectuelle</h5>
+                    <p>Tous les contenus publiés sur EduLink (textes, images, logos, etc.) sont protégés par les droits d’auteur et ne peuvent être utilisés sans autorisation.</p>
+                   </div>`;
+    }
+    break;
+
+}
+                    
+                    // Create modal
+                    const modalHTML = `
+                    <div class="modal fade" id="dynamicModal" tabindex="-1" aria-hidden="true">
+                      <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">${title}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            ${content}
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>`;
+                    
+                    
+                    document.body.insertAdjacentHTML('beforeend', modalHTML);
+                    
+                    
+                    const modal = new bootstrap.Modal(document.getElementById('dynamicModal'));
+                    modal.show();
+                    
+                    
+                    document.getElementById('dynamicModal').addEventListener('hidden.bs.modal', function() {
+                        this.remove();
+                    });
+                });
+            }
+        });
+    });
+</script>
+</body>
+</html>
