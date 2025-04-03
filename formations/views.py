@@ -15,7 +15,7 @@ import re
 
 
 def liste_formateurs(request):
-    # Récupère tous les formateurs
+    # Récuperation de tous les formateurs
     formateurs = Formateur.objects.all()
 
     # Filtrage par localité
@@ -54,11 +54,11 @@ def register(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)  # Connecte automatiquement l'utilisateur
+            login(request, user)  # Connexion automatique de l'utilisateur
             messages.success(request, "Inscription réussie !")
             return redirect("dashboard")
         else:
-            # Affiche les erreurs dans la console pour debug
+            # Affichage des erreurs dans la console pour debug
             print("Erreurs du formulaire:", form.errors) 
     else:
         form = RegisterForm()
@@ -137,7 +137,7 @@ def newsletter_subscribe(request):
                 'message': 'Vous êtes déjà abonné à notre newsletter'
             })
         
-        # Réactive si existant mais désactivé
+        # Réactivation si existant mais désactivé
         if not created:
             subscriber.is_active = True
             subscriber.save()
@@ -160,7 +160,7 @@ def contact(request):
             email = request.POST.get('email')
             message = request.POST.get('message')
             
-            # Envoyer l'email
+            
             send_mail(
                 subject=f"Nouveau contact depuis EduLink: {name}",
                 message=f"De: {name} <{email}>\n\nMessage:\n{message}",

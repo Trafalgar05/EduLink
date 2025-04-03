@@ -9,7 +9,7 @@
                 <div class="card border-0 shadow-lg profile-card">
                     <div class="card-body p-0">
                         <div class="row g-0">
-                            <!-- Section gauche avec photo et informations de base -->
+                            <!-- Section gauche avec informations de base -->
                             <div class="col-md-4 bg-primary text-white profile-sidebar">
                                 <div class="profile-header text-center p-4">
                                     {% if formateur.photo %}
@@ -105,13 +105,13 @@
                                             </div>
                                         </div>
                                         
-                                        <!-- Espace supplémentaire pour compenser l'absence de description -->
+                                
                                         <div class="profile-call-to-action mt-4 pt-4 border-top">
                                             <h5 class="text-primary mb-3">Commencer l'apprentissage</h5>
                                             <p>Ce formateur est disponible pour vous accompagner dans votre parcours éducatif. N'hésitez pas à le contacter pour en savoir plus sur ses méthodes d'enseignement et disponibilités.</p>
                                         </div>
                                         
-                                        <!-- Appel à l'action pour les mobiles uniquement -->
+                                        
                                         <div class="d-md-none mt-4">
                                             <div class="d-grid gap-2">
                                                 <a href="mailto:{{ formateur.email }}" class="btn btn-primary">
@@ -135,9 +135,9 @@
     </div>
 </section>
 
-<!-- Styles spécifiques à la page profil formateur -->
+
 <style>
-    /* Section profil formateur */
+    
     .formateur-profile-section {
         background-color: #f8f9fa;
         min-height: 100vh;
@@ -270,7 +270,7 @@
         border-radius: 10px;
     }
     
-    /* Responsive */
+    
     @media (max-width: 767.98px) {
         .profile-sidebar {
             border-radius: 15px 15px 0 0;

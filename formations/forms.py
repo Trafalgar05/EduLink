@@ -33,7 +33,7 @@ class RegisterForm(UserCreationForm):
             ("Mathématiques", "Mathématiques"),
             ("Français", "Français"),
             ("Arabe", "Arabe"),
-            ("Histo-Geo", "Histo-Geo"),
+            ("Histoire et Geographie", "Histore et Geographie"),
             ("Physique", "Physique"),
             ("Anglais", "Anglais"),
             ("Informatique", "Informatique"),

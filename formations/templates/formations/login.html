@@ -13,54 +13,55 @@
             {% csrf_token %}
 
             {% if messages %}
-  {% for message in messages %}
-    <div class="alert alert-{{ message.tags }}">
-      {{ message }}
-    </div>
-  {% endfor %}
-{% endif %}
+              {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
 
-{% if error_message %}
-  <div class="alert alert-danger">
-    {{ error_message }}
-  </div>
-{% endif %}
+            {% if error_message %}
+              <div class="alert alert-danger">
+                {{ error_message }}
+              </div>
+            {% endif %}
             
-            <!-- Nom complet field -->
             <div class="mb-3">
               <label for="id_nom_complet" class="form-label">Nom complet</label>
-              {% if form.nom_complet %}
-                {{ form.nom_complet }}
-              {% else %}
-                <input type="text" name="nom_complet" id="id_nom_complet" class="form-control" placeholder="Votre nom complet" required>
-              {% endif %}
+              <div class="input-with-icon">
+                {% if form.nom_complet %}
+                  {{ form.nom_complet }}
+                {% else %}
+                  <input type="text" name="nom_complet" id="id_nom_complet" class="form-control" placeholder="Votre nom complet" required>
+                {% endif %}
+                <span class="input-icon">
+                  <i class="bi bi-person"></i>
+                </span>
+              </div>
               <div class="invalid-feedback">Veuillez entrer votre nom complet</div>
             </div>
 
-            <!-- Password field avec toggle -->
             <div class="mb-4">
               <label for="id_password" class="form-label">Mot de passe</label>
-              <div class="input-group">
+              <div class="input-with-icon">
                 {% if form.password %}
                   {{ form.password }}
                 {% else %}
                   <input type="password" name="password" id="id_password" class="form-control" placeholder="Mot de passe" required>
                 {% endif %}
-                <button class="btn btn-outline-secondary toggle-password" type="button" data-target="id_password">
+                <span class="input-icon toggle-password" data-target="id_password">
                   <i class="bi bi-eye"></i>
-                </button>
-                <div class="invalid-feedback">Veuillez entrer votre mot de passe</div>
+                </span>
               </div>
+              <div class="invalid-feedback">Veuillez entrer votre mot de passe</div>
             </div>
 
-            <!-- Submit button -->
             <div class="d-grid mb-3">
               <button type="submit" class="btn btn-primary btn-lg py-3 rounded-pill shadow-sm">
-                Se connecter
+                <i class="bi bi-box-arrow-in-right me-2"></i>Se connecter
               </button>
             </div>
             
-            <!-- Register link - URL sans namespace -->
             <div class="text-center">
               <p class="mb-0">Pas encore de compte ? <a href="{% url 'register' %}" class="fw-bold text-decoration-none">S'inscrire</a></p>
             </div>
@@ -72,7 +73,6 @@
 </div>
 
 <style>
-  /* Variables CSS pour une meilleure cohérence */
   :root {
     --primary-color: #4361ee;
     --primary-hover: #3a56d4;
@@ -87,7 +87,6 @@
     color: var(--text-color);
   }
 
-  /* Stylisation de la carte */
   .form-card {
     border-radius: var(--radius);
     overflow: hidden;
@@ -101,16 +100,39 @@
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
   }
 
-  /* Gradient pour l'en-tête */
   .bg-gradient-primary {
     background: linear-gradient(135deg, var(--primary-color), #3f37c9);
   }
 
-  /* Style pour les champs Django générés */
-  #id_nom_complet, #id_password {
+  
+  .input-with-icon {
+    position: relative;
+  }
+
+  .input-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d;
+    cursor: pointer;
+    z-index: 10;
+    transition: color var(--transition-speed);
+  }
+
+  .input-icon:hover {
+    color: var(--primary-color);
+  }
+
+  .toggle-password:hover {
+    color: var(--primary-color);
+  }
+
+  /* accommodation des icônes */
+  #id_nom_complet, #id_password, .form-control, .form-select {
     display: block;
     width: 100%;
-    padding: 0.375rem 0.75rem;
+    padding: 0.75rem 2.5rem 0.75rem 0.75rem;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
@@ -119,48 +141,15 @@
     background-clip: padding-box;
     border: 1px solid #ced4da;
     border-radius: 0.5rem;
-    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-  }
-
-  /* Ajustement pour les inputs dans les groupes */
-  .input-group #id_password {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-
-  /* Ajustement pour les boutons de toggle */
-  .toggle-password {
-    border-top-right-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
-    cursor: pointer;
-  }
-
-  .toggle-password:hover {
-    background-color: #e9ecef;
-  }
-
-  
-  #id_nom_complet:focus, #id_password:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 0.25rem rgba(67, 97, 238, 0.15);
-    outline: 0;
-  }
-
-  
-  .form-control, .form-select {
-    border: 1px solid #ddd;
-    padding: 0.75rem;
-    border-radius: 0.5rem;
     transition: all var(--transition-speed);
   }
-
-  .form-control:focus, .form-select:focus {
+  
+  #id_nom_complet:focus, #id_password:focus, .form-control:focus, .form-select:focus {
     border-color: var(--primary-color);
     box-shadow: 0 0 0 0.25rem rgba(67, 97, 238, 0.15);
     outline: 0;
   }
 
-  
   .btn-primary {
     background-color: var(--primary-color);
     border-color: var(--primary-color);
@@ -173,7 +162,6 @@
     transform: translateY(-2px);
   }
 
-  
   @media (max-width: 768px) {
     .card-body {
       padding: 1.5rem;
@@ -197,7 +185,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.head.appendChild(iconLink);
   }
 
-  
+  // Application des classes Bootstrap aux champs Django
   const djangoFields = ['id_nom_complet', 'id_password'];
   djangoFields.forEach(fieldId => {
     const field = document.getElementById(fieldId);
@@ -210,15 +198,14 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
+  // Gestion des boutons d'affichage mot de passe
+  const toggleButtons = document.querySelectorAll('.toggle-password');
   
-  const toggleButton = document.querySelector('.toggle-password');
-  
-  if (toggleButton) {
-    toggleButton.addEventListener('click', function() {
+  toggleButtons.forEach(button => {
+    button.addEventListener('click', function() {
       const targetId = this.getAttribute('data-target');
       const passwordField = document.getElementById(targetId);
       const icon = this.querySelector('i');
-      
       
       if (passwordField.type === 'password') {
         passwordField.type = 'text';
@@ -230,9 +217,9 @@ document.addEventListener("DOMContentLoaded", function() {
         icon.classList.add('bi-eye');
       }
     });
-  }
+  });
 
-  
+  // Validation formulaire
   const form = document.querySelector('form');
   
   form.addEventListener('submit', function(event) {

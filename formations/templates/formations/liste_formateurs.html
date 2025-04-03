@@ -4,7 +4,7 @@
 {% block content %}
 <section class="formateurs-list-section py-5">
     <div class="container">
-        <!-- En-tête de page avec titre et description -->
+        
         <div class="row justify-content-center mb-5">
             <div class="col-lg-8 text-center">
                 <h1 class="display-5 fw-bold mb-3">Liste des Formateurs</h1>
@@ -12,7 +12,7 @@
             </div>
         </div>
 
-        <!-- Carte de filtrage -->
+        
         <div class="row justify-content-center mb-5">
             <div class="col-lg-10">
                 <div class="card border-0 shadow-sm filter-card">
@@ -23,7 +23,7 @@
                         
                         <form method="get" class="filter-form">
                             <div class="row g-3">
-                                <!-- Filtre par localité -->
+                                
                                 <div class="col-md-5">
                                     <label for="localite" class="form-label">Localité</label>
                                     <div class="input-group">
@@ -39,7 +39,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Filtre par matière -->
+                                
                                 <div class="col-md-5">
                                     <label for="matiere" class="form-label">Matière</label>
                                     <div class="input-group">
@@ -56,7 +56,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Bouton de filtrage -->
+                                
                                 <div class="col-md-2 d-flex align-items-end">
                                     <button type="submit" class="btn btn-primary btn-lg w-100">
                                         <i class="bi bi-search me-2"></i>Filtrer
@@ -69,14 +69,14 @@
             </div>
         </div>
 
-        <!-- Résultats de la recherche -->
+        
         <div class="row justify-content-center">
             <div class="col-lg-10">
                 <div class="result-count mb-4">
                     <span class="badge bg-primary">{{ formateurs.count }} formateur(s) trouvé(s)</span>
                 </div>
                 
-                <!-- Liste des formateurs -->
+                
                 <div class="formateurs-grid">
                     {% for formateur in formateurs %}
                         <div class="formateur-card card border-0 shadow-sm hover-card">
@@ -135,15 +135,15 @@
     </div>
 </section>
 
-<!-- Styles spécifiques à la page liste des formateurs -->
+
 <style>
-    /* Section liste des formateurs */
+    
     .formateurs-list-section {
         background-color: #f8f9fa;
         min-height: 100vh;
     }
     
-    /* Carte de filtrage */
+    
     .filter-card {
         border-radius: 15px;
         margin-bottom: 2rem;
@@ -169,7 +169,7 @@
         border-left: none;
     }
     
-    /* Grille des formateurs */
+    
     .formateurs-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
@@ -188,7 +188,7 @@
         }
     }
     
-    /* Carte de formateur */
+    
     .formateur-card {
         border-radius: 15px;
         overflow: hidden;
@@ -253,7 +253,7 @@
         border-radius: 50px;
     }
     
-    /* État vide */
+    
     .empty-state {
         background-color: white;
         border-radius: 15px;

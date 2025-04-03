@@ -3,7 +3,6 @@
 {% block content %}
 <div class="container py-5">
   <div class="row g-4">
-    <!-- Sidebar avec avatar et informations principales -->
     <div class="col-lg-4">
       <div class="card border-0 shadow-sm profile-sidebar h-100">
         <div class="card-body text-center d-flex flex-column">
@@ -36,9 +35,7 @@
       </div>
     </div>
     
-    <!-- Main content area -->
     <div class="col-lg-8">
-      <!-- Carte d'information de l'enseignant -->
       <div class="card border-0 shadow-sm mb-4">
         <div class="card-header bg-white border-0 d-flex align-items-center">
           <i class="bi bi-info-circle-fill text-primary me-2"></i>
@@ -75,7 +72,6 @@
         </div>
       </div>
       
-      <!-- Availability Management Card -->
       <div class="card border-0 shadow-sm">
         <div class="card-header bg-white border-0 d-flex align-items-center justify-content-between">
           <div class="d-flex align-items-center">
@@ -89,7 +85,6 @@
         
         <div class="card-body">
           <div id="availabilityList" class="availability-list">
-            <!-- Dynamically populated availability slots -->
           </div>
           
           <div id="noAvailabilities" class="text-center text-muted py-4" style="display:none;">
@@ -102,7 +97,6 @@
   </div>
 </div>
 
-<!-- AJOUT DE DISPONIBILITE -->
 <div class="modal fade" id="addAvailabilityModal" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -149,9 +143,7 @@
   </div>
 </div>
 
-
 <style>
-  /* Variables CSS pour une meilleure cohérence */
   :root {
     --primary-color: #4361ee;
     --primary-hover: #3a56d4;
@@ -173,7 +165,6 @@
     color: var(--text-color);
   }
 
-  /* Stylisation des cartes */
   .card {
     border-radius: var(--radius);
     transition: transform var(--transition-speed), box-shadow var(--transition-speed);
@@ -192,7 +183,6 @@
     padding: 1.25rem 1.5rem;
   }
 
-  /* Avatar et placeholder */
   .avatar-container {
     position: relative;
     width: 120px;
@@ -233,7 +223,6 @@
     font-weight: bold;
   }
 
-  /* Boutons */
   .btn {
     padding: 0.6rem 1.5rem;
     transition: all var(--transition-speed);
@@ -297,7 +286,6 @@
     font-size: 0.75rem;
   }
 
-  /* Responsive adjustments */
   @media (max-width: 768px) {
     .avatar-container {
       width: 100px;
@@ -321,7 +309,6 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  // Ajouter Bootstrap Icons si non déjà présent
   if (!document.querySelector('link[href*="bootstrap-icons"]')) {
     const iconLink = document.createElement('link');
     iconLink.rel = 'stylesheet';
@@ -334,7 +321,6 @@ document.addEventListener("DOMContentLoaded", function() {
   const availabilityForm = document.getElementById('availabilityForm');
   const addAvailabilityModal = new bootstrap.Modal(document.getElementById('addAvailabilityModal'));
 
-  
   let availabilities = JSON.parse(localStorage.getItem('teacherAvailabilities') || '[]');
 
   function renderAvailabilities() {
@@ -376,7 +362,6 @@ document.addEventListener("DOMContentLoaded", function() {
       availabilityList.appendChild(availabilityItem);
     });
 
-    // Add event listeners for edit and delete
     document.querySelectorAll('.edit-btn').forEach(btn => {
       btn.addEventListener('click', editAvailability);
     });
@@ -385,7 +370,6 @@ document.addEventListener("DOMContentLoaded", function() {
       btn.addEventListener('click', deleteAvailability);
     });
 
-    // Save to localStorage
     localStorage.setItem('teacherAvailabilities', JSON.stringify(availabilities));
   }
 
@@ -393,16 +377,13 @@ document.addEventListener("DOMContentLoaded", function() {
     const index = e.currentTarget.dataset.index;
     const availability = availabilities[index];
     
-    // Prefill modal with existing data
     document.getElementById('availabilityDay').value = availability.day;
     document.getElementById('availabilityStart').value = availability.start;
     document.getElementById('availabilityEnd').value = availability.end;
     document.getElementById('availabilityType').value = availability.type;
     
-    // Remove the existing item from the list
     availabilities.splice(index, 1);
     
-    // Show modal
     addAvailabilityModal.show();
   }
 
@@ -425,12 +406,10 @@ document.addEventListener("DOMContentLoaded", function() {
     availabilities.push(newAvailability);
     renderAvailabilities();
     
-    // Reset form and close modal
     availabilityForm.reset();
     addAvailabilityModal.hide();
   });
 
-  // Initial render
   renderAvailabilities();
 });
 </script>

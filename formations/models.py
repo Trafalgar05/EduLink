@@ -4,7 +4,7 @@ from django.db import models
 class Formateur(AbstractUser):
     username = None  # On désactive le username
     nom_complet = models.CharField(max_length=100, unique=True)
-    email = models.EmailField(unique=True)  # 🔹 Champ email obligatoire
+    email = models.EmailField(unique=True)  #  Champ email obligatoire
 
     # Choices
     LOCALITE_CHOICES = [
@@ -20,7 +20,7 @@ class Formateur(AbstractUser):
         ("Mathématiques", "Mathématiques"),
         ("Français", "Français"),
         ("Arabe", "Arabe"),
-        ("Histo-Geo", "Histo-Geo"),
+        ("Histoire et Geographie", "Histoire et Geographie"),
         ("Physique", "Physique"),
         ("Anglais", "Anglais"),
         ("Informatique", "Informatique"),
@@ -33,12 +33,12 @@ class Formateur(AbstractUser):
     numero = models.CharField(max_length=20, blank=True)
     date_ajout = models.DateTimeField(auto_now_add=True)
 
-    # 🔹 Utilise 'nom_complet' comme identifiant de connexion
+    # j'utilise ici 'nom_complet' comme identifiant de connexion
     USERNAME_FIELD = 'nom_complet'
-    # 🔹 Champs requis pour la commande 'createsuperuser'
+    #  Champs requis pour la commande 'createsuperuser'
     REQUIRED_FIELDS = ['email', 'localite', 'matiere']  
 
-    # Relations ManyToMany (évite les conflits avec AbstractUser)
+    # Relations ManyToMany pour éviter les conflits avec AbstractUser
     groups = models.ManyToManyField(
         'auth.Group',
         related_name='formateur_groups',

@@ -17,7 +17,7 @@
             
             
             <div class="row">
-              <!-- Informations personnelles -->
+              
               <div class="col-md-6 mb-3">
                 <label for="id_username" class="form-label">
                   <i class="bi bi-person-fill me-2 text-primary"></i>Nom complet
@@ -49,7 +49,7 @@
               </div>
             </div>
             
-            <!-- Information professionnelle -->
+            
             <div class="mb-3">
               <label for="id_matiere" class="form-label">
                 <i class="bi bi-book me-2 text-primary"></i>Matière enseignée
@@ -81,7 +81,7 @@
 </div>
 
 <style>
-  /* Variables CSS pour une meilleure cohérence */
+  
   :root {
     --primary-color: #4361ee;
     --primary-hover: #3a56d4;
@@ -103,7 +103,7 @@
     color: var(--text-color);
   }
 
-  /* Stylisation des cartes */
+  
   .card {
     border-radius: var(--radius);
     transition: transform var(--transition-speed), box-shadow var(--transition-speed);
@@ -122,7 +122,7 @@
     padding: 1.25rem 1.5rem;
   }
 
-  /* Avatar et placeholder */
+  
   .avatar-container {
     position: relative;
     width: 120px;
@@ -162,7 +162,7 @@
     font-weight: bold;
   }
 
-  /* Stylisation des form-controls */
+  
   .form-control {
     padding: 0.6rem 1.5rem;
     border: 1px solid #ced4da;
@@ -174,7 +174,7 @@
     box-shadow: 0 0 0 0.25rem rgba(67, 97, 238, 0.25);
   }
 
-  /* Boutons */
+  
   .btn {
     padding: 0.6rem 1.5rem;
     transition: all var(--transition-speed);
@@ -202,7 +202,7 @@
     transform: translateY(-3px);
   }
 
-  /* Responsive adjustments */
+  
   @media (max-width: 768px) {
     .avatar-container {
       width: 100px;
@@ -226,7 +226,7 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  // Ajouter Bootstrap Icons si non déjà présent
+  
   if (!document.querySelector('link[href*="bootstrap-icons"]')) {
     const iconLink = document.createElement('link');
     iconLink.rel = 'stylesheet';
@@ -246,10 +246,10 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }
   
-  // Vérifier l'état initial
+  // Vérification de l'état initial
   checkMatiere();
   
-  // Ajouter un écouteur d'événement pour les changements
+  // Ajout d'un écouteur d'événement pour les changements
   matiereSelect.addEventListener('change', checkMatiere);
 });
 </script>
